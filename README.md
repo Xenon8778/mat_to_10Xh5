@@ -20,3 +20,6 @@ import pandas as pd
 adata = sc.read_10x_h5('output.h5')
 adata.obs = pd.read_csv('meta_output.csv',index_col=0)
 ```
+
+## References
+James J Cai, scGEAToolbox: a Matlab toolbox for single-cell RNA sequencing data analysis, Bioinformatics, Volume 36, Issue 6, March 2020, Pages 1948–1949, https://doi.org/10.1093/bioinformatics/btz830
