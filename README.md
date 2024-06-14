@@ -19,5 +19,5 @@ import scanpy as sc
 import pandas as pd
 adata = sc.read_10x_h5('output.h5')
 adata.obs = pd.read_csv('meta_output.csv',index_col=0)
-data
+print(adata)
 ```
