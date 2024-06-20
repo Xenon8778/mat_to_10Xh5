@@ -9,7 +9,7 @@ mat_to_10Xh5(sce,'output.h5');
 library(seurat)
 so = Read10X_h5('output.h5')
 so = CreateSeuratObject(CreateAssayObject(so))
-meta = read.csv('meta_output.csv', row.names = 1)
+meta = read.csv('output_meta.csv', row.names = 1)
 so = AddMetaData(so,meta)
 ```
 
@@ -18,7 +18,7 @@ so = AddMetaData(so,meta)
 import scanpy as sc
 import pandas as pd
 adata = sc.read_10x_h5('output.h5')
-adata.obs = pd.read_csv('meta_output.csv',index_col=0)
+adata.obs = pd.read_csv('output_meta.csv',index_col=0)
 ```
 
 ## References
