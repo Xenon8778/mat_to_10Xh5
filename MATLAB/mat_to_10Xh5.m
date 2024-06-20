@@ -51,7 +51,7 @@ if issparse(sce.X)
     celltypes = sce.c_cell_type_tx;
     clusters = sce.c_cluster_id;
     batch = sce.c_batch_id;
-    meta_filename = append('meta_',filename(1:end-3),'.csv');
+    meta_filename = append(filename(1:end-3),'_meta.csv');
     metatable = table(barcodes,celltypes,clusters,batch);
     writetable(metatable,meta_filename);
 end
