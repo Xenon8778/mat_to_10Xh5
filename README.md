@@ -1,5 +1,7 @@
 # mat_to_10Xh5
-Function for converting sce files from scGEATool to 10X Genomics  HDF5 format, while preserving metadata.
+Function for converting MATLAB .sce files from scGEATool to 10X Genomics HDF5 format, while preserving metadata in a separate .csv file.
+Input = scGEATool single-cell experiment object.
+Output = HDF5 file and a .csv file.
 
 ``` matlab
 mat_to_10Xh5(sce,'output.h5');
