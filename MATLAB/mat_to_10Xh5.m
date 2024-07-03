@@ -57,7 +57,7 @@ barcodes = sce.c_cell_id;
 celltypes = sce.c_cell_type_tx;
 clusters = sce.c_cluster_id;
 batch = sce.c_batch_id;
-meta_filename = append('meta_',filename(1:end-3),'.csv');
+meta_filename = append(filename(1:end-3),'_meta.csv');
 metatable = table(barcodes,celltypes,clusters,batch);
 writetable(metatable,meta_filename);
 end
@@ -77,16 +77,21 @@ function [indptr, indices, data] = convert_sparse_to_indptr(X)
     
     % Find non-zero elements and their indices
     [row, col] = find(X);
-    
+     
+    disp('sorting...')
     % Sort by columns for efficient construction
     [~, sort_idx] = sort(col);
     row = row(sort_idx);
     col = col(sort_idx);
     
+    disp('accumulating...')
     % Accumulate column counts for indptr
+    f = waitbar(0, 'Starting');
     for i = 1:n
         indptr(i+1) = indptr(i) + sum(col == i);
+        waitbar(i/n, f, sprintf('Progress: %d %%', floor(i/n*100)));
     end
+    close(f)
     
     % Assign indices and data. -1 to start indexing from 0
     indices = row-1;
